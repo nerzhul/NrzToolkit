@@ -3,9 +3,9 @@
 
 import NrzDataStorage, NrzConfig
 
-def generate():
-	htmlBuffer = "<div>Prochain RER %s en gare de %s</div><div>Le %s à %s</div>" % (NrzConfig.RERType, NrzConfig.RERStation, NrzDataStorage.RERhour, NrzDataStorage.RERday)
+def generate(_store):
+	htmlBuffer = "<div>Prochain RER %s en gare de %s</div><div>Le %s a %s</div>" % (NrzConfig.RERType, NrzConfig.RERStation, _store.RERday, _store.RERhour)
 	
-	outFile = open("/var/www/htdocs/index.htm","wb")
+	outFile = open(NrzConfig.ReportPath,"wb")
 	outFile.write(htmlBuffer)
 	outFile.close()

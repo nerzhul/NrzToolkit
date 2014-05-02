@@ -1,11 +1,14 @@
 #! /usr/local/bin/python2.7
 
 import RATP
-import NrzReport
+import NrzReport, NrzDataStorage
 
-ret = RATP.parseRER()
+_store = NrzDataStorage.NrzStore()
 
-NrzReport.generate()
+ret = RATP.parseRER(_store)
+
+NrzReport.generate(_store)
+
 if ret == -1:
 	print "RATP.parseRER: FATAL ERROR (return code %s)" % ret
 else:
